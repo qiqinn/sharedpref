@@ -52,6 +52,8 @@ class _HomeState extends State<Home> {
   void _logOut() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove('isUser');
+    prefs.setString('username', username);
+    prefs.setString('fullname', fullname);
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => MyApp()));
   }
 
