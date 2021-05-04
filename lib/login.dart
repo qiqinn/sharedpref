@@ -85,17 +85,6 @@ class _LoginState extends State<Login> {
         }
 
       });
-
-      /* Future.delayed(Duration(seconds: 1), () {
-        for (var i = 0; i < data.dataAssisten.length; i++) {
-          if (_username.text == data.dataAssisten[i] && _pass.text == data.dataAssisten[i]) {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Home()));
-        }
-
-      }
-    });*/
-
     }
   }
 }
