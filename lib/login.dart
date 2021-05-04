@@ -60,30 +60,26 @@ class _LoginState extends State<Login> {
   }
 
   Future<void> _login() async {
-    String username = _username.text;
-    String password = _pass.text;
 
     if (_username.text.isNotEmpty && _pass.text.isNotEmpty) {
       setState(() {
         isLoading = true;
       });
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      
 
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       Future.delayed(Duration(seconds: 1), () {
         for (int id = 0; id < dataAssisten.length; id++) {
-          if (username == dataAssisten[id]["UserName"] &&
-              password == dataAssisten[id]["PassWord"]) {
-            print('Successfull');
+          if (_username.text == dataAssisten[id]["UserName"] &&
+              _pass.text == dataAssisten[id]["PassWord"]) {
             String fullname = dataAssisten[id]["FullName"];
+            String username =dataAssisten[id]["UserName"];
             prefs.setBool('isUser', true);
             prefs.setString('username', username);
             prefs.setString('fullname', fullname);
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Home()));
+            Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => Home()));
           }
         }
-
       });
     }
   }
